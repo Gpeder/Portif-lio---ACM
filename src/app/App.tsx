@@ -26,45 +26,6 @@ export default function App() {
       <Viewer3D />
       <Experiencia />
       <Contato />
-      <style>{`
-        html {
-          scroll-behavior: smooth;
-        }
-
-        * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-
-        h1, h2, h3, h4 {
-          font-weight: inherit;
-          line-height: inherit;
-          font-size: inherit;
-        }
-
-        ::selection {
-          background: rgba(200, 169, 126, 0.25);
-          color: #1C1C1A;
-        }
-
-        ::-webkit-scrollbar {
-          width: 4px;
-        }
-
-        ::-webkit-scrollbar-track {
-          background: #0D0D0D;
-        }
-
-        ::-webkit-scrollbar-thumb {
-          background: #C8A97E;
-          border-radius: 0;
-        }
-
-        a {
-          text-decoration: none;
-        }
-      `}</style>
     </div>
   );
 }

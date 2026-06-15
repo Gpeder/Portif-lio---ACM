@@ -12,169 +12,47 @@ export function Hero() {
   return (
     <section
       id="hero"
-      style={{
-        minHeight: "100vh",
-        background: "#0D0D0D",
-        display: "flex",
-        alignItems: "center",
-        position: "relative",
-        overflow: "hidden",
-      }}
+      className="min-h-screen bg-dark-bg flex items-center relative overflow-hidden"
     >
-      {/* * Linha decorativa vertical (fundo) */}
-      <div
-        style={{
-          position: "absolute",
-          right: "30%",
-          top: "15%",
-          bottom: "15%",
-          width: 1,
-          background: "rgba(232, 226, 217, 0.18)",
-        }}
-      />
+      {/* deocracao */}
+      <div className="absolute right-[30%] top-[15%] bottom-[15%] w-px bg-cream-soft/18" />
 
-      {/* ! Conteúdo principal da seção Hero */}
-      <div
-        style={{
-          maxWidth: 1280,
-          width: "100%",
-          margin: "0 auto",
-          padding: "0 40px",
-          paddingTop: 80,
-        }}
-      >
-        <p
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 300,
-            fontSize: 11,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "#C8A97E",
-            marginBottom: 32,
-            animation: "heroFadeIn 1s ease 0.2s both",
-          }}
-        >
+      {/* conteudo */}
+      <div className="max-w-7xl w-full mx-auto px-10 pt-20">
+        <p className="font-body font-light text-[11px] tracking-[0.22em] uppercase text-gold mb-8 animate-[heroFadeIn_1s_ease_0.2s_both]">
           Arquitetura & Interiores
         </p>
 
-        <h1
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 300,
-            fontSize: "clamp(52px, 9vw, 110px)",
-            letterSpacing: "0.06em",
-            color: "#F5F0E8",
-            lineHeight: 1.0,
-            margin: 0,
-            marginBottom: 32,
-            animation: "heroFadeIn 1s ease 0.4s both",
-          }}
-        >
+        <h1 className="font-heading font-light text-[clamp(52px,9vw,110px)] tracking-[0.06em] text-cream leading-none m-0 mb-8 animate-[heroFadeIn_1s_ease_0.4s_both]">
           ANA CAROLINA
           <br />
-          <em
-            style={{
-              fontStyle: "italic",
-              fontWeight: 300,
-              color: "#E8E2D9",
-            }}
-          >
+          <em className="italic font-light text-cream-soft">
             MIRANDA
           </em>
         </h1>
 
-        <p
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 300,
-            fontSize: 15,
-            letterSpacing: "0.08em",
-            color: "rgba(232, 226, 217, 0.6)",
-            marginBottom: 56,
-            animation: "heroFadeIn 1s ease 0.6s both",
-          }}
-        >
+        <p className="font-body font-light text-[15px] tracking-[0.08em] text-cream-soft/60 mb-14 animate-[heroFadeIn_1s_ease_0.6s_both]">
           Arquiteta e Urbanista · BIM · Interiores · Execução
         </p>
 
         <a
           href="#projetos"
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 300,
-            fontSize: 11,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "#F5F0E8",
-            textDecoration: "none",
-            borderBottom: "0.5px solid rgba(232, 226, 217, 0.4)",
-            paddingBottom: 4,
-            transition: "color 0.3s ease, border-color 0.3s ease",
-            display: "inline-block",
-            animation: "heroFadeIn 1s ease 0.8s both",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.color = "#C8A97E";
-            (e.currentTarget as HTMLElement).style.borderColor = "#C8A97E";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.color = "#F5F0E8";
-            (e.currentTarget as HTMLElement).style.borderColor =
-              "rgba(232, 226, 217, 0.4)";
-          }}
+          className="hero-link animate-[heroFadeIn_1s_ease_0.8s_both]"
         >
           Ver projetos ↓
         </a>
       </div>
 
-      {/* @sessão (indicador de rolagem do mouse) */}
+      {/* Indicador de rolagem */}
       <div
-        style={{
-          position: "absolute",
-          bottom: 40,
-          left: "50%",
-          transform: "translateX(-50%)",
-          opacity: arrowVisible ? 1 : 0,
-          transition: "opacity 0.4s ease",
-          animation: arrowVisible ? "pulse 2s ease infinite" : "none",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 8,
-        }}
+        className={`absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-opacity duration-[400ms] ${arrowVisible
+          ? "opacity-100 animate-[heroScroll_2s_ease_infinite]"
+          : "opacity-0"
+          }`}
       >
-        <div
-          style={{
-            width: 1,
-            height: 40,
-            background:
-              "linear-gradient(to bottom, transparent, rgba(200, 169, 126, 0.6))",
-          }}
-        />
-        <div
-          style={{
-            width: 6,
-            height: 6,
-            border: "0.5px solid #C8A97E",
-            borderLeft: "none",
-            borderTop: "none",
-            transform: "rotate(45deg)",
-            opacity: 0.7,
-          }}
-        />
+        <div className="w-px h-10 bg-gradient-to-b from-transparent to-gold/60" />
+        <div className="w-1.5 h-1.5 border-[0.5px] border-solid border-gold border-l-transparent border-t-transparent rotate-45 opacity-70" />
       </div>
-
-      <style>{`
-        @keyframes heroFadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-          0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
-          50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
-        }
-      `}</style>
     </section>
   );
 }

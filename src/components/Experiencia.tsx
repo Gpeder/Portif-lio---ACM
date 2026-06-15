@@ -45,65 +45,27 @@ export function Experiencia() {
   return (
     <section
       id="experiencia"
-      style={{
-        background: "#F5F0E8",
-        padding: "96px 40px",
-        borderTop: "0.5px solid #E8E2D9",
-      }}
+      className="bg-cream py-24 px-10 border-t-[0.5px] border-t-cream-soft"
     >
-      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        {/* @sessão (cabeçalho) */}
-        <div data-section style={{ marginBottom: 64, textAlign: "center" }}>
+      <div className="max-w-7xl mx-auto">
+        <div data-section className="mb-16 text-center">
           <p
             data-reveal
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 300,
-              fontSize: 10,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              color: "#6B5B45",
-              marginBottom: 12,
-            }}
+            className="font-body font-light text-[10px] tracking-[0.22em] uppercase text-[#6B5B45] mb-3"
           >
             Trajetória
           </p>
           <h2
             data-reveal
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 400,
-              fontSize: "clamp(32px, 3.5vw, 48px)",
-              color: "#1C1C1A",
-              letterSpacing: "0.02em",
-            }}
+            className="font-heading font-normal text-[clamp(32px,3.5vw,48px)] text-[#1C1C1A] tracking-[0.02em]"
           >
             Experiência
           </h2>
         </div>
 
-        {/* ! Linha do tempo (experiências) */}
-        <div
-          style={{
-            position: "relative",
-            maxWidth: 900,
-            margin: "0 auto",
-          }}
-        >
-          {/* * Linha central divisória */}
-          <div
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: 0,
-              bottom: 0,
-              width: 1,
-              background:
-                "linear-gradient(to bottom, transparent, #C8A97E 8%, #C8A97E 92%, transparent)",
-              transform: "translateX(-50%)",
-            }}
-            className="timeline-line"
-          />
+        <div className="relative max-w-[900px] mx-auto">
+          {/* Linha central — oculta no mobile */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 [background:linear-gradient(to_bottom,transparent,#C8A97E_8%,#C8A97E_92%,transparent)]" />
 
           {timeline.map((item, i) => {
             const isLeft = i % 2 === 0;
@@ -111,110 +73,46 @@ export function Experiencia() {
               <div
                 key={i}
                 data-section
-                style={{
-                  display: "flex",
-                  justifyContent: isLeft ? "flex-start" : "flex-end",
-                  marginBottom: 48,
-                  position: "relative",
-                }}
-                className="timeline-item"
+                className={`flex mb-12 relative justify-start ${isLeft ? "md:justify-start" : "md:justify-end"}`}
               >
-                {/* * Marcador visual (ponto da timeline) */}
+                {/* Ponto da timeline — oculto no mobile */}
                 <div
-                  style={{
-                    position: "absolute",
-                    left: "50%",
-                    top: 20,
-                    transform: "translate(-50%, -50%)",
-                    width: item.destaque ? 10 : 6,
-                    height: item.destaque ? 10 : 6,
-                    background: item.destaque ? "#C8A97E" : "#E8E2D9",
-                    border: `1px solid ${item.destaque ? "#C8A97E" : "#C8A97E"}`,
-                    borderRadius: 0,
-                    zIndex: 1,
-                    transition: "transform 0.3s ease",
-                  }}
-                  className="timeline-dot"
+                  className={`hidden md:block absolute left-1/2 top-5 -translate-x-1/2 -translate-y-1/2 border border-solid border-gold z-[1] transition-transform duration-300 ${
+                    item.destaque ? "w-[10px] h-[10px] bg-gold" : "w-[6px] h-[6px] bg-cream-soft"
+                  }`}
                 />
 
-                {/* * Bloco de conteúdo (card de experiência) */}
+                {/* Card */}
                 <div
                   data-reveal
-                  style={{
-                    width: "calc(50% - 40px)",
-                    background: item.destaque ? "#0D0D0D" : "#FFFFFF",
-                    border: `0.5px solid ${item.destaque ? "#C8A97E" : "#E8E2D9"}`,
-                    borderRadius: 2,
-                    padding: "24px 28px",
-                    position: "relative",
-                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-                    (e.currentTarget as HTMLElement).style.boxShadow =
-                      "0 8px 24px rgba(0,0,0,0.06)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                  }}
+                  className={`w-full md:w-[calc(50%-40px)] rounded-[2px] py-6 px-7 relative transition-[transform,box-shadow] duration-300 hover:-translate-y-[2px] hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] border-[0.5px] border-solid ${
+                    item.destaque
+                      ? "bg-dark-bg border-gold"
+                      : "bg-white border-cream-soft"
+                  }`}
                 >
-                  {/* * Período de atuação */}
-                  <span
-                    style={{
-                      fontFamily: "'DM Mono', monospace",
-                      fontSize: 10,
-                      letterSpacing: "0.1em",
-                      color: "#C8A97E",
-                      display: "block",
-                      marginBottom: 8,
-                    }}
-                  >
+                  <span className="font-dm-mono text-[10px] tracking-[0.1em] text-gold block mb-2">
                     {item.periodo}
                   </span>
 
-                  {/* * Cargo ocupado */}
                   <h3
-                    style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontWeight: 400,
-                      fontSize: 20,
-                      color: item.destaque ? "#F5F0E8" : "#1C1C1A",
-                      margin: 0,
-                      marginBottom: 6,
-                      letterSpacing: "0.02em",
-                    }}
+                    className={`font-heading font-normal text-[20px] m-0 mb-1.5 tracking-[0.02em] ${
+                      item.destaque ? "text-cream" : "text-[#1C1C1A]"
+                    }`}
                   >
                     {item.cargo}
                   </h3>
 
-                  {/* * Empresa ou instituição */}
                   <p
-                    style={{
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontWeight: 300,
-                      fontSize: 13,
-                      color: item.destaque
-                        ? "rgba(232, 226, 217, 0.6)"
-                        : "#6B5B45",
-                      margin: 0,
-                      marginBottom: item.descricao ? 12 : 0,
-                    }}
+                    className={`font-body font-light text-[13px] m-0 ${
+                      item.destaque ? "text-cream-soft/60" : "text-[#6B5B45]"
+                    } ${item.descricao ? "mb-3" : ""}`}
                   >
                     {item.empresa}
                   </p>
 
                   {item.descricao && (
-                    <p
-                      style={{
-                        fontFamily: "'DM Sans', sans-serif",
-                        fontWeight: 300,
-                        fontSize: 13,
-                        lineHeight: 1.7,
-                        color: "#2C2C2A",
-                        margin: 0,
-                      }}
-                    >
+                    <p className="font-body font-light text-[13px] leading-[1.7] text-[#2C2C2A] m-0">
                       {item.descricao}
                     </p>
                   )}
@@ -224,19 +122,6 @@ export function Experiencia() {
           })}
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 767px) {
-          .timeline-line { display: none !important; }
-          .timeline-dot { display: none !important; }
-          .timeline-item {
-            justify-content: flex-start !important;
-          }
-          .timeline-item > div:last-child {
-            width: 100% !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

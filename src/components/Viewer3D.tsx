@@ -190,82 +190,39 @@ export function Viewer3D() {
   }, [activeEnv]);
 
   return (
-    <section
-      id="viewer3d"
-      style={{
-        background: "#0D0D0D",
-        padding: "96px 40px",
-      }}
-    >
-      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <div data-section style={{ marginBottom: 48 }}>
+    <section id="viewer3d" className="bg-dark-bg py-24 px-10">
+      <div className="max-w-7xl mx-auto">
+        <div data-section className="mb-12">
           <p
             data-reveal
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 300,
-              fontSize: 10,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              color: "#6B5B45",
-              marginBottom: 12,
-            }}
+            className="font-body font-light text-[10px] tracking-[0.22em] uppercase text-[#6B5B45] mb-3"
           >
             Interativo
           </p>
           <h2
             data-reveal
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 300,
-              fontSize: "clamp(32px, 3.5vw, 48px)",
-              color: "#F5F0E8",
-              letterSpacing: "0.04em",
-              marginBottom: 16,
-            }}
+            className="font-heading font-light text-[clamp(32px,3.5vw,48px)] text-cream tracking-[0.04em] mb-4"
           >
             Visualização 3D
           </h2>
           <p
             data-reveal
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 300,
-              fontSize: 14,
-              color: "rgba(232, 226, 217, 0.5)",
-              letterSpacing: "0.04em",
-            }}
+            className="font-body font-light text-[14px] text-cream-soft/50 tracking-[0.04em]"
           >
             Explore a modelagem tridimensional dos projetos
           </p>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            gap: 8,
-            marginBottom: 24,
-            flexWrap: "wrap",
-          }}
-        >
+        <div className="flex gap-2 mb-6 flex-wrap">
           {environments.map((env, i) => (
             <button
               key={env.name}
               onClick={() => setActiveEnv(i)}
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 300,
-                fontSize: 11,
-                letterSpacing: "0.16em",
-                textTransform: "uppercase",
-                padding: "10px 24px",
-                border: `0.5px solid ${activeEnv === i ? "#C8A97E" : "rgba(232, 226, 217, 0.2)"}`,
-                background: activeEnv === i ? "rgba(200, 169, 126, 0.12)" : "transparent",
-                color: activeEnv === i ? "#C8A97E" : "rgba(232, 226, 217, 0.5)",
-                cursor: "pointer",
-                borderRadius: 0,
-                transition: "all 0.3s ease",
-              }}
+              className={`font-body font-light text-[11px] tracking-[0.16em] uppercase py-[10px] px-6 border-[0.5px] border-solid cursor-pointer transition-all duration-300 ${
+                activeEnv === i
+                  ? "border-gold bg-[rgba(200,169,126,0.12)] text-gold"
+                  : "border-[rgba(232,226,217,0.2)] bg-transparent text-cream-soft/50"
+              }`}
             >
               {env.name}
             </button>
@@ -274,45 +231,14 @@ export function Viewer3D() {
 
         <div
           ref={canvasRef}
-          style={{
-            width: "100%",
-            height: 480,
-            border: "0.5px solid rgba(232, 226, 217, 0.15)",
-            borderRadius: 0,
-            overflow: "hidden",
-            position: "relative",
-          }}
+          className="w-full h-[480px] border-[0.5px] border-solid border-[rgba(232,226,217,0.15)] overflow-hidden relative"
         />
 
-        <div
-          style={{
-            marginTop: 20,
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: 12,
-          }}
-        >
-          <p
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 300,
-              fontSize: 13,
-              color: "rgba(232, 226, 217, 0.45)",
-              fontStyle: "italic",
-            }}
-          >
+        <div className="mt-5 flex justify-between items-center flex-wrap gap-3">
+          <p className="font-body font-light text-[13px] text-cream-soft/45 italic">
             {environments[activeEnv].description}
           </p>
-          <span
-            style={{
-              fontFamily: "'DM Mono', monospace",
-              fontSize: 10,
-              color: "#6B5B45",
-              letterSpacing: "0.1em",
-            }}
-          >
+          <span className="font-dm-mono text-[10px] text-[#6B5B45] tracking-[0.1em]">
             THREE.JS · ORBIT AUTOMÁTICO
           </span>
         </div>

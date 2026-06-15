@@ -28,52 +28,19 @@ function SkillBar({ name, level }: { name: string; level: number }) {
   }, []);
 
   return (
-    <div ref={ref} style={{ marginBottom: 16 }}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginBottom: 6,
-        }}
-      >
-        <span
-          style={{
-            fontFamily: "'DM Mono', monospace",
-            fontSize: 11,
-            letterSpacing: "0.1em",
-            color: "#C8A97E",
-          }}
-        >
+    <div ref={ref} className="mb-4">
+      <div className="flex justify-between mb-1.5">
+        <span className="font-dm-mono text-[11px] tracking-[0.1em] text-gold">
           {name}
         </span>
-        <span
-          style={{
-            fontFamily: "'DM Mono', monospace",
-            fontSize: 10,
-            color: "#6B5B45",
-          }}
-        >
+        <span className="font-dm-mono text-[10px] text-[#6B5B45]">
           {level}/5
         </span>
       </div>
-      <div
-        style={{
-          height: 1,
-          background: "#E8E2D9",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
+      <div className="h-px bg-cream-soft relative overflow-hidden">
         <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            height: "100%",
-            width: animated ? `${(level / 5) * 100}%` : "0%",
-            background: "#C8A97E",
-            transition: "width 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.2s",
-          }}
+          className="absolute left-0 top-0 h-full bg-gold transition-[width] duration-[900ms] ease-in-out delay-200"
+          style={{ width: animated ? `${(level / 5) * 100}%` : "0%" }}
         />
       </div>
     </div>
@@ -85,121 +52,41 @@ export function Sobre() {
     <section
       id="sobre"
       data-section
-      style={{
-        background: "#F5F0E8",
-        padding: "96px 40px",
-      }}
+      className="bg-cream py-24 px-10"
     >
-      <div
-        style={{
-          maxWidth: 1280,
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 80,
-          alignItems: "center",
-        }}
-        className="sobre-grid"
-      >
-        <div data-reveal style={{ position: "relative" }}>
-          <div
-            style={{
-              width: "100%",
-              aspectRatio: "3/4",
-              background: "#E8E2D9",
-              clipPath:
-                "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              position: "relative",
-              overflow: "hidden",
-            }}
-          >
-            <div
-              style={{
-                textAlign: "center",
-                padding: 24,
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 300,
-                  fontSize: 18,
-                  color: "#6B5B45",
-                  letterSpacing: "0.1em",
-                  marginBottom: 8,
-                }}
-              >
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div data-reveal className="relative">
+          <div className="w-full aspect-[3/4] bg-cream-soft [clip-path:polygon(0_0,100%_0,100%_85%,85%_100%,0_100%)] flex items-center justify-center relative overflow-hidden">
+            <div className="text-center p-6">
+              <p className="font-heading font-light text-[18px] text-[#6B5B45] tracking-[0.1em] mb-2">
                 Ana Carolina Miranda
               </p>
-              <p
-                style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 10,
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  color: "#C8A97E",
-                }}
-              >
+              <p className="font-body text-[10px] tracking-[0.2em] uppercase text-gold">
                 Arquiteta
               </p>
             </div>
           </div>
-          <div
-            style={{
-              position: "absolute",
-              bottom: -16,
-              left: 24,
-              width: 64,
-              height: 1,
-              background: "#C8A97E",
-            }}
-          />
+          <div className="absolute -bottom-4 left-6 w-16 h-px bg-gold" />
         </div>
 
         <div>
           <p
             data-reveal
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 300,
-              fontSize: 10,
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              color: "#6B5B45",
-              marginBottom: 16,
-            }}
+            className="font-body font-light text-[10px] tracking-[0.22em] uppercase text-[#6B5B45] mb-4"
           >
             Sobre
           </p>
 
           <h2
             data-reveal
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 400,
-              fontSize: "clamp(32px, 3.5vw, 48px)",
-              color: "#1C1C1A",
-              lineHeight: 1.15,
-              letterSpacing: "0.02em",
-              marginBottom: 28,
-            }}
+            className="font-heading font-normal text-[clamp(32px,3.5vw,48px)] text-[#1C1C1A] leading-[1.15] tracking-[0.02em] mb-7"
           >
             Sobre Ana Carolina
           </h2>
 
           <p
             data-reveal
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 300,
-              fontSize: 15,
-              lineHeight: 1.8,
-              color: "#2C2C2A",
-              marginBottom: 40,
-            }}
+            className="font-body font-light text-[15px] leading-[1.8] text-[#2C2C2A] mb-10"
           >
             Arquiteta formada pela PUCMINAS — Poços de Caldas, com experiência
             em projetos residenciais, comerciais e institucionais. Atua com foco
@@ -208,18 +95,8 @@ export function Sobre() {
             visualização 3D com Twinmotion.
           </p>
 
-          <div data-reveal style={{ marginBottom: 40 }}>
-            <p
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 300,
-                fontSize: 10,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: "#6B5B45",
-                marginBottom: 20,
-              }}
-            >
+          <div data-reveal className="mb-10">
+            <p className="font-body font-light text-[10px] tracking-[0.22em] uppercase text-[#6B5B45] mb-5">
               Ferramentas
             </p>
             {skills.map((s) => (
@@ -227,37 +104,17 @@ export function Sobre() {
             ))}
           </div>
 
-          <div data-reveal style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div data-reveal className="flex flex-col gap-3">
             {[
               { label: "Email", value: "anacarolinamirandaa@gmail.com" },
               { label: "Telefone", value: "(35) 99200-0394" },
               { label: "Localização", value: "São Sebastião do Paraíso, MG" },
             ].map((item) => (
-              <div key={item.label} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                <span
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: 300,
-                    fontSize: 10,
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                    color: "#6B5B45",
-                    minWidth: 80,
-                    paddingTop: 2,
-                  }}
-                >
+              <div key={item.label} className="flex gap-4 items-start">
+                <span className="font-body font-light text-[10px] tracking-[0.18em] uppercase text-[#6B5B45] min-w-20 pt-[2px]">
                   {item.label}
                 </span>
-                <span
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: 300,
-                    fontSize: 14,
-                    color: "#1C1C1A",
-                    borderBottom: "0.5px solid #E8E2D9",
-                    paddingBottom: 4,
-                  }}
-                >
+                <span className="font-body font-light text-[14px] text-[#1C1C1A] border-b-[0.5px] border-b-cream-soft pb-1">
                   {item.value}
                 </span>
               </div>
@@ -265,15 +122,6 @@ export function Sobre() {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 767px) {
-          .sobre-grid {
-            grid-template-columns: 1fr !important;
-            gap: 48px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

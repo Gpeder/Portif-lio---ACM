@@ -29,57 +29,26 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
   return (
     <>
       <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 100,
-          transition: "background 0.4s ease, box-shadow 0.4s ease",
-          background: scrolled ? "#F5F0E8" : "transparent",
-          boxShadow: scrolled ? "0 1px 0 rgba(0,0,0,0.08)" : "none",
-        }}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-[background,box-shadow] duration-[400ms] ease-in-out ${scrolled
+          ? "bg-cream shadow-[0_1px_0_rgba(0,0,0,0.08)]"
+          : "bg-transparent shadow-none"
+          }`}
       >
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            padding: "0 40px",
-            height: 64,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        <div className="max-w-7xl mx-auto px-10 h-16 flex items-center justify-between">
           <a
             href="#"
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 300,
-              fontSize: 22,
-              letterSpacing: "0.12em",
-              color: scrolled ? "#0D0D0D" : "#F5F0E8",
-              textDecoration: "none",
-              transition: "color 0.4s ease",
-            }}
+            className={`font-heading font-light text-[22px] tracking-[0.12em] transition-colors duration-[400ms] ease-in-out ${scrolled ? "text-dark-bg" : "text-cream"
+              }`}
           >
             ACM
           </a>
 
-          {/* ! Menu de navegação para Desktop */}
-          <ul
-            style={{
-              display: "flex",
-              gap: 40,
-              listStyle: "none",
-              margin: 0,
-              padding: 0,
-            }}
-            className="hidden-mobile"
-          >
+          {/* Menu de navegação para Desktop */}
+          <ul className="hidden md:flex gap-10 list-none m-0 p-0">
             {navItems.map((item) => {
               const id = item.href.replace("#", "");
               const isActive = activeSection === id;
@@ -87,32 +56,12 @@ export function Navbar() {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    style={{
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontWeight: 300,
-                      fontSize: 11,
-                      letterSpacing: "0.2em",
-                      textTransform: "uppercase",
-                      color: isActive
-                        ? "#C8A97E"
-                        : scrolled
-                          ? "#2C2C2A"
-                          : "#E8E2D9",
-                      textDecoration: "none",
-                      transition: "color 0.3s ease",
-                      position: "relative",
-                      paddingBottom: 2,
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.target as HTMLElement).style.color = "#C8A97E";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.target as HTMLElement).style.color = isActive
-                        ? "#C8A97E"
-                        : scrolled
-                          ? "#2C2C2A"
-                          : "#E8E2D9";
-                    }}
+                    className={`font-body font-light text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 relative pb-[2px] hover:text-gold ${isActive
+                      ? "text-gold"
+                      : scrolled
+                        ? "text-[#2C2C2A]"
+                        : "text-cream-soft"
+                      }`}
                   >
                     {item.label}
                   </a>
@@ -121,54 +70,28 @@ export function Navbar() {
             })}
           </ul>
 
-          {/* * Botão Menu Hamburger (Mobile) */}
+          {/* Botão Menu Hamburger (Mobile) */}
           <button
-            className="show-mobile"
+            className="md:hidden cursor-pointer p-2 bg-transparent border-0"
             onClick={() => setMenuOpen(!menuOpen)}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: 8,
-              display: "none",
-            }}
             aria-label="Menu"
           >
             <div
-              style={{
-                width: 22,
-                height: 1,
-                background: scrolled ? "#0D0D0D" : "#F5F0E8",
-                marginBottom: 6,
-                transition: "background 0.3s ease",
-              }}
+              className={`w-[22px] h-px mb-1.5 transition-colors duration-300 ${scrolled ? "bg-dark-bg" : "bg-cream"
+                }`}
             />
             <div
-              style={{
-                width: 22,
-                height: 1,
-                background: scrolled ? "#0D0D0D" : "#F5F0E8",
-                transition: "background 0.3s ease",
-              }}
+              className={`w-[22px] h-px transition-colors duration-300 ${scrolled ? "bg-dark-bg" : "bg-cream"
+                }`}
             />
           </button>
         </div>
       </nav>
 
-      {/* @sessão (menu mobile suspenso) */}
+      {/* Menu mobile suspenso */}
       {menuOpen && (
         <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            zIndex: 99,
-            background: "#0D0D0D",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 40,
-          }}
+          className="fixed inset-0 z-[99] bg-dark-bg flex flex-col items-center justify-center gap-10"
           onClick={() => setMenuOpen(false)}
         >
           {navItems.map((item) => (
@@ -176,32 +99,13 @@ export function Navbar() {
               key={item.label}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 300,
-                fontSize: 13,
-                letterSpacing: "0.24em",
-                textTransform: "uppercase",
-                color: "#E8E2D9",
-                textDecoration: "none",
-              }}
+              className="font-body font-light text-[13px] tracking-[0.24em] uppercase text-cream-soft"
             >
               {item.label}
             </a>
           ))}
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 767px) {
-          .hidden-mobile { display: none !important; }
-          .show-mobile { display: block !important; }
-        }
-        @media (min-width: 768px) {
-          .show-mobile { display: none !important; }
-          .hidden-mobile { display: flex !important; }
-        }
-      `}</style>
     </>
   );
 }

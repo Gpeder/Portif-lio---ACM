@@ -64,169 +64,47 @@ const projects = [
 
 type Project = (typeof projects)[0];
 
-function ProjectCard({
-  project,
-  onClick,
-}: {
-  project: Project;
-  onClick: () => void;
-}) {
-  const [hovered, setHovered] = useState(false);
-
+function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
   return (
     <div
       data-reveal
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       onClick={onClick}
-      style={{
-        background: "#FFFFFF",
-        borderRadius: 2,
-        border: `0.5px solid ${hovered ? "#C8A97E" : "#E8E2D9"}`,
-        overflow: "hidden",
-        cursor: "pointer",
-        transition:
-          "transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease",
-        transform: hovered ? "translateY(-4px)" : "translateY(0)",
-        boxShadow: hovered
-          ? "0 16px 40px rgba(13, 13, 13, 0.08)"
-          : "0 2px 8px rgba(13, 13, 13, 0.04)",
-        position: "relative",
-      }}
+      className="group bg-white rounded-[2px] border-[0.5px] border-solid border-cream-soft overflow-hidden cursor-pointer transition-[transform,border-color,box-shadow] duration-[400ms] ease-in-out hover:-translate-y-1 hover:border-gold shadow-[0_2px_8px_rgba(13,13,13,0.04)] hover:shadow-[0_16px_40px_rgba(13,13,13,0.08)] relative"
     >
       <div
-        style={{
-          width: "100%",
-          height: 200,
-          background: project.accent,
-          position: "relative",
-          overflow: "hidden",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        className="w-full h-[200px] relative overflow-hidden flex items-center justify-center"
+        style={{ background: project.accent }}
       >
-        <span
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 300,
-            fontSize: 16,
-            color: "rgba(28, 28, 26, 0.5)",
-            letterSpacing: "0.08em",
-            textAlign: "center",
-            padding: "0 16px",
-          }}
-        >
+        <span className="font-heading font-light text-[16px] text-[rgba(28,28,26,0.5)] tracking-[0.08em] text-center px-4">
           {project.title}
         </span>
 
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "#0D0D0D",
-            opacity: hovered ? 0.88 : 0,
-            transition: "opacity 0.4s ease",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 12,
-            padding: 24,
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 400,
-              fontSize: 20,
-              color: "#F5F0E8",
-              letterSpacing: "0.04em",
-              textAlign: "center",
-            }}
-          >
+        <div className="absolute inset-0 bg-dark-bg opacity-0 group-hover:opacity-[0.88] transition-opacity duration-[400ms] ease-in-out flex flex-col items-center justify-center gap-3 p-6">
+          <span className="font-heading font-normal text-[20px] text-cream tracking-[0.04em] text-center">
             {project.title}
           </span>
-          <div
-            style={{
-              display: "flex",
-              gap: 8,
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
+          <div className="flex gap-2 flex-wrap justify-center">
             {project.tools.map((tool) => (
-              <span
-                key={tool}
-                style={{
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: 10,
-                  color: "#C8A97E",
-                  letterSpacing: "0.1em",
-                }}
-              >
+              <span key={tool} className="font-dm-mono text-[10px] text-gold tracking-[0.1em]">
                 {tool}
               </span>
             ))}
           </div>
-          <span
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 300,
-              fontSize: 10,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "rgba(232, 226, 217, 0.5)",
-              marginTop: 4,
-            }}
-          >
+          <span className="font-body font-light text-[10px] tracking-[0.18em] uppercase text-cream-soft/50 mt-1">
             Ver projeto →
           </span>
         </div>
       </div>
 
-      <div style={{ padding: "16px 20px 18px" }}>
-        <h3
-          style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 400,
-            fontSize: 18,
-            color: "#1C1C1A",
-            margin: 0,
-            marginBottom: 6,
-            letterSpacing: "0.02em",
-          }}
-        >
+      <div className="px-5 pt-4 pb-[18px]">
+        <h3 className="font-heading font-normal text-[18px] text-[#1C1C1A] m-0 mb-1.5 tracking-[0.02em]">
           {project.title}
         </h3>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "'DM Mono', monospace",
-              fontSize: 10,
-              color: "#C8A97E",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-            }}
-          >
+        <div className="flex justify-between items-center">
+          <span className="font-dm-mono text-[10px] text-gold tracking-[0.1em] uppercase">
             {project.tools.join(" · ")}
           </span>
-          <span
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontWeight: 300,
-              fontSize: 10,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: "#6B5B45",
-            }}
-          >
+          <span className="font-body font-light text-[10px] tracking-[0.12em] uppercase text-[#6B5B45]">
             {project.category}
           </span>
         </div>
@@ -248,85 +126,38 @@ export function Projetos() {
     <>
       <section
         id="projetos"
-        style={{
-          background: "#F5F0E8",
-          padding: "96px 40px",
-          borderTop: "0.5px solid #E8E2D9",
-        }}
+        className="bg-cream py-24 px-10 border-t-[0.5px] border-t-cream-soft"
       >
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+        <div className="max-w-7xl mx-auto">
           <div
             data-section
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-end",
-              marginBottom: 56,
-              flexWrap: "wrap",
-              gap: 24,
-            }}
+            className="flex justify-between items-end mb-14 flex-wrap gap-6"
           >
             <div>
               <p
                 data-reveal
-                style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontWeight: 300,
-                  fontSize: 10,
-                  letterSpacing: "0.22em",
-                  textTransform: "uppercase",
-                  color: "#6B5B45",
-                  marginBottom: 12,
-                }}
+                className="font-body font-light text-[10px] tracking-[0.22em] uppercase text-[#6B5B45] mb-3"
               >
                 Portfólio
               </p>
               <h2
                 data-reveal
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 400,
-                  fontSize: "clamp(32px, 3.5vw, 48px)",
-                  color: "#1C1C1A",
-                  letterSpacing: "0.02em",
-                  lineHeight: 1.1,
-                }}
+                className="font-heading font-normal text-[clamp(32px,3.5vw,48px)] text-[#1C1C1A] tracking-[0.02em] leading-[1.1]"
               >
                 Projetos
               </h2>
             </div>
 
-            <div data-reveal style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+            <div data-reveal className="flex gap-1 flex-wrap">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveFilter(cat)}
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: 300,
-                    fontSize: 10,
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                    padding: "8px 16px",
-                    border: `0.5px solid ${activeFilter === cat ? "#C8A97E" : "#E8E2D9"}`,
-                    background: activeFilter === cat ? "#C8A97E" : "transparent",
-                    color: activeFilter === cat ? "#FFFFFF" : "#6B5B45",
-                    cursor: "pointer",
-                    borderRadius: 0,
-                    transition: "all 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    if (activeFilter !== cat) {
-                      (e.currentTarget as HTMLElement).style.borderColor = "#C8A97E";
-                      (e.currentTarget as HTMLElement).style.color = "#C8A97E";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (activeFilter !== cat) {
-                      (e.currentTarget as HTMLElement).style.borderColor = "#E8E2D9";
-                      (e.currentTarget as HTMLElement).style.color = "#6B5B45";
-                    }
-                  }}
+                  className={`font-body font-light text-[10px] tracking-[0.18em] uppercase py-2 px-4 border-[0.5px] border-solid cursor-pointer transition-all duration-300 ${
+                    activeFilter === cat
+                      ? "border-gold bg-gold text-white"
+                      : "border-cream-soft bg-transparent text-[#6B5B45] hover:border-gold hover:text-gold"
+                  }`}
                 >
                   {cat}
                 </button>
@@ -336,12 +167,7 @@ export function Projetos() {
 
           <div
             data-section
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 24,
-            }}
-            className="projects-grid"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filtered.map((project) => (
               <ProjectCard
@@ -352,15 +178,6 @@ export function Projetos() {
             ))}
           </div>
         </div>
-
-        <style>{`
-          @media (max-width: 767px) {
-            .projects-grid { grid-template-columns: 1fr !important; }
-          }
-          @media (min-width: 768px) and (max-width: 1023px) {
-            .projects-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          }
-        `}</style>
       </section>
 
       <ProjectModal

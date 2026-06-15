@@ -29,105 +29,31 @@ function ImageGallery({ project }: { project: Project }) {
   const colors = placeholderColors.slice(0, count);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 12, height: "100%" }}>
-      {/* * Imagem principal ativa */}
+    <div className="flex flex-col gap-3 h-full">
       <div
-        style={{
-          flex: 1,
-          background: colors[current],
-          borderRadius: 2,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: 300,
-          position: "relative",
-          overflow: "hidden",
-          transition: "background 0.4s ease",
-        }}
+        className="flex-1 rounded-[2px] flex items-center justify-center min-h-[300px] relative overflow-hidden transition-[background] duration-[400ms]"
+        style={{ background: colors[current] }}
       >
-        <div style={{ textAlign: "center", padding: 24 }}>
-          <p
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 300,
-              fontSize: 22,
-              color: "rgba(28, 28, 26, 0.45)",
-              letterSpacing: "0.08em",
-            }}
-          >
+        <div className="text-center p-6">
+          <p className="font-heading font-light text-[22px] text-[rgba(28,28,26,0.45)] tracking-[0.08em]">
             {project.title}
           </p>
-          <p
-            style={{
-              fontFamily: "'DM Mono', monospace",
-              fontSize: 10,
-              color: "rgba(107, 91, 69, 0.6)",
-              letterSpacing: "0.1em",
-              marginTop: 8,
-            }}
-          >
+          <p className="font-dm-mono text-[10px] text-[rgba(107,91,69,0.6)] tracking-[0.1em] mt-2">
             {String(current + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
           </p>
         </div>
 
-        {/* * Setas de navegação (anterior/próxima) */}
         {count > 1 && (
           <>
             <button
               onClick={() => setCurrent((c) => (c - 1 + count) % count)}
-              style={{
-                position: "absolute",
-                left: 16,
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "rgba(13,13,13,0.35)",
-                border: "0.5px solid rgba(232,226,217,0.3)",
-                color: "#F5F0E8",
-                width: 36,
-                height: 36,
-                cursor: "pointer",
-                borderRadius: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 16,
-                transition: "background 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(200,169,126,0.5)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(13,13,13,0.35)";
-              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-[rgba(13,13,13,0.35)] border-[0.5px] border-solid border-[rgba(232,226,217,0.3)] text-cream w-9 h-9 cursor-pointer flex items-center justify-center text-[16px] transition-[background] duration-300 hover:bg-[rgba(200,169,126,0.5)]"
             >
               ←
             </button>
             <button
               onClick={() => setCurrent((c) => (c + 1) % count)}
-              style={{
-                position: "absolute",
-                right: 16,
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "rgba(13,13,13,0.35)",
-                border: "0.5px solid rgba(232,226,217,0.3)",
-                color: "#F5F0E8",
-                width: 36,
-                height: 36,
-                cursor: "pointer",
-                borderRadius: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 16,
-                transition: "background 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(200,169,126,0.5)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background = "rgba(13,13,13,0.35)";
-              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-[rgba(13,13,13,0.35)] border-[0.5px] border-solid border-[rgba(232,226,217,0.3)] text-cream w-9 h-9 cursor-pointer flex items-center justify-center text-[16px] transition-[background] duration-300 hover:bg-[rgba(200,169,126,0.5)]"
             >
               →
             </button>
@@ -135,24 +61,16 @@ function ImageGallery({ project }: { project: Project }) {
         )}
       </div>
 
-      {/* * Miniaturas das imagens adicionais */}
       {count > 1 && (
-        <div style={{ display: "flex", gap: 8 }}>
+        <div className="flex gap-2">
           {colors.map((c, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              style={{
-                flex: 1,
-                height: 56,
-                background: c,
-                border: `1.5px solid ${current === i ? "#C8A97E" : "transparent"}`,
-                cursor: "pointer",
-                borderRadius: 2,
-                transition: "border-color 0.3s ease, opacity 0.3s ease",
-                opacity: current === i ? 1 : 0.6,
-                padding: 0,
-              }}
+              className={`flex-1 h-14 border-[1.5px] border-solid cursor-pointer rounded-[2px] transition-[border-color,opacity] duration-300 p-0 ${
+                current === i ? "border-gold opacity-100" : "border-transparent opacity-60"
+              }`}
+              style={{ background: c }}
             />
           ))}
         </div>
@@ -185,167 +103,59 @@ export function ProjectModal({
 
   return (
     <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 200,
-        display: "flex",
-        alignItems: "stretch",
-        animation: "modalIn 0.35s ease",
-      }}
+      className="fixed inset-0 z-[200] flex items-stretch animate-[modalIn_0.35s_ease]"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      {/* * Fundo escuro com efeito blur */}
       <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(13, 13, 13, 0.85)",
-          backdropFilter: "blur(6px)",
-        }}
+        className="absolute inset-0 bg-dark-bg/85 backdrop-blur-[6px]"
         onClick={onClose}
       />
 
-      {/* ! Painel central do Modal */}
       <div
-        style={{
-          position: "relative",
-          marginLeft: "auto",
-          width: "min(92vw, 1100px)",
-          background: "#F5F0E8",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          overflow: "hidden",
-          animation: "slideIn 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
-        }}
-        className="modal-panel"
+        className="relative ml-auto w-[min(92vw,1100px)] bg-cream grid grid-cols-1 md:grid-cols-2 overflow-hidden animate-[slideIn_0.4s_cubic-bezier(0.22,1,0.36,1)]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* @sessão (galeria de imagens - esquerda) */}
-        <div
-          style={{
-            background: "#FFFFFF",
-            padding: 32,
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
+        {/* Galeria - esquerda */}
+        <div className="bg-white p-8 flex flex-col">
           <ImageGallery project={project} />
         </div>
 
-        {/* @sessão (informações do projeto - direita) */}
-        <div
-          style={{
-            padding: "40px 40px 40px 36px",
-            display: "flex",
-            flexDirection: "column",
-            overflowY: "auto",
-            maxHeight: "100vh",
-          }}
-        >
-          {/* * Cabeçalho e botão de fechar */}
-          <div style={{ marginBottom: 32 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
-              <span
-                style={{
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: 10,
-                  letterSpacing: "0.14em",
-                  color: "#C8A97E",
-                  textTransform: "uppercase",
-                }}
-              >
+        {/* Informações - direita */}
+        <div className="pt-10 pr-10 pb-10 pl-9 flex flex-col overflow-y-auto max-h-screen">
+          <div className="mb-8">
+            <div className="flex justify-between items-start mb-4">
+              <span className="font-dm-mono text-[10px] tracking-[0.14em] text-gold uppercase">
                 {project.category}
               </span>
               <button
                 onClick={onClose}
-                style={{
-                  background: "none",
-                  border: "0.5px solid #E8E2D9",
-                  color: "#6B5B45",
-                  width: 32,
-                  height: 32,
-                  cursor: "pointer",
-                  borderRadius: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 16,
-                  transition: "border-color 0.3s ease, color 0.3s ease",
-                  flexShrink: 0,
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "#C8A97E";
-                  (e.currentTarget as HTMLElement).style.color = "#C8A97E";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "#E8E2D9";
-                  (e.currentTarget as HTMLElement).style.color = "#6B5B45";
-                }}
+                className="bg-transparent border-[0.5px] border-solid border-cream-soft text-[#6B5B45] w-8 h-8 cursor-pointer flex items-center justify-center text-[16px] transition-[border-color,color] duration-300 flex-shrink-0 hover:border-gold hover:text-gold"
               >
                 ✕
               </button>
             </div>
 
-            <h2
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 400,
-                fontSize: 36,
-                color: "#1C1C1A",
-                letterSpacing: "0.02em",
-                lineHeight: 1.1,
-                marginBottom: 8,
-              }}
-            >
+            <h2 className="font-heading font-normal text-[36px] text-[#1C1C1A] tracking-[0.02em] leading-[1.1] mb-2">
               {project.title}
             </h2>
-            <p
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 300,
-                fontSize: 13,
-                color: "#6B5B45",
-                letterSpacing: "0.04em",
-              }}
-            >
+            <p className="font-body font-light text-[13px] text-[#6B5B45] tracking-[0.04em]">
               {project.type}
             </p>
           </div>
 
-          {/* * Linha divisória simples */}
-          <div style={{ height: 0.5, background: "#E8E2D9", marginBottom: 28 }} />
+          <div className="h-[0.5px] bg-cream-soft mb-7" />
 
-          {/* * Tecnologias / Softwares utilizados */}
-          <div style={{ marginBottom: 28 }}>
-            <p
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 300,
-                fontSize: 10,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: "#6B5B45",
-                marginBottom: 12,
-              }}
-            >
+          <div className="mb-7">
+            <p className="font-body font-light text-[10px] tracking-[0.22em] uppercase text-[#6B5B45] mb-3">
               Ferramentas
             </p>
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <div className="flex gap-2 flex-wrap">
               {project.tools.map((tool) => (
                 <span
                   key={tool}
-                  style={{
-                    fontFamily: "'DM Mono', monospace",
-                    fontSize: 11,
-                    letterSpacing: "0.1em",
-                    color: "#C8A97E",
-                    background: "#0D0D0D",
-                    padding: "6px 12px",
-                    borderRadius: 0,
-                  }}
+                  className="font-dm-mono text-[11px] tracking-[0.1em] text-gold bg-dark-bg py-1.5 px-3"
                 >
                   {tool}
                 </span>
@@ -353,59 +163,22 @@ export function ProjectModal({
             </div>
           </div>
 
-          {/* * Descrições e detalhes textuais do projeto */}
-          <div style={{ marginBottom: 28 }}>
-            <p
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 300,
-                fontSize: 10,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: "#6B5B45",
-                marginBottom: 12,
-              }}
-            >
+          <div className="mb-7">
+            <p className="font-body font-light text-[10px] tracking-[0.22em] uppercase text-[#6B5B45] mb-3">
               Sobre o projeto
             </p>
-            <p
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 300,
-                fontSize: 14,
-                lineHeight: 1.85,
-                color: "#2C2C2A",
-              }}
-            >
+            <p className="font-body font-light text-[14px] leading-[1.85] text-[#2C2C2A]">
               {loremDesc}
             </p>
           </div>
 
-          <div style={{ marginBottom: 32 }}>
-            <p
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 300,
-                fontSize: 14,
-                lineHeight: 1.85,
-                color: "#2C2C2A",
-              }}
-            >
+          <div className="mb-8">
+            <p className="font-body font-light text-[14px] leading-[1.85] text-[#2C2C2A]">
               {loremDetails}
             </p>
           </div>
 
-          {/* * Grade de metadados técnicos (categoria, tipo, softwares) */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 20,
-              marginTop: "auto",
-              paddingTop: 20,
-              borderTop: "0.5px solid #E8E2D9",
-            }}
-          >
+          <div className="grid grid-cols-2 gap-5 mt-auto pt-5 border-t-[0.5px] border-t-cream-soft">
             {[
               { label: "Categoria", value: project.category },
               { label: "Tipo", value: project.type },
@@ -413,27 +186,10 @@ export function ProjectModal({
               { label: "Software", value: project.tools.join(", ") },
             ].map((item) => (
               <div key={item.label}>
-                <p
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: 300,
-                    fontSize: 10,
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                    color: "#6B5B45",
-                    marginBottom: 4,
-                  }}
-                >
+                <p className="font-body font-light text-[10px] tracking-[0.18em] uppercase text-[#6B5B45] mb-1">
                   {item.label}
                 </p>
-                <p
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: 300,
-                    fontSize: 13,
-                    color: "#1C1C1A",
-                  }}
-                >
+                <p className="font-body font-light text-[13px] text-[#1C1C1A]">
                   {item.value}
                 </p>
               </div>
@@ -441,25 +197,6 @@ export function ProjectModal({
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes modalIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes slideIn {
-          from { transform: translateX(40px); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        @media (max-width: 767px) {
-          .modal-panel {
-            grid-template-columns: 1fr !important;
-            width: 100% !important;
-            margin: 0 !important;
-            overflow-y: auto !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }
