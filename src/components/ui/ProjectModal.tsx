@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ProjectItem } from "@/types/portifolio";
 
 const loremDesc =
   "Este projeto foi desenvolvido com foco em precisão técnica e sensibilidade espacial, equilibrando estética contemporânea com funcionalidade. Cada detalhe foi pensado para criar uma experiência de habitação única, desde a distribuição dos ambientes até a escolha de materiais e acabamentos. A concepção partiu de um briefing detalhado com o cliente, resultando em um projeto personalizado que reflete sua identidade e estilo de vida.";
@@ -14,16 +15,7 @@ const placeholderColors = [
   "#CCBAA8",
 ];
 
-type Project = {
-  title: string;
-  category: string;
-  tools: string[];
-  type: string;
-  images: number;
-  accent: string;
-};
-
-function ImageGallery({ project }: { project: Project }) {
+function ImageGallery({ project }: { project: ProjectItem }) {
   const [current, setCurrent] = useState(0);
   const count = Math.min(project.images ?? 3, 5);
   const colors = placeholderColors.slice(0, count);
@@ -83,7 +75,7 @@ export function ProjectModal({
   project,
   onClose,
 }: {
-  project: Project | null;
+  project: ProjectItem | null;
   onClose: () => void;
 }) {
   useEffect(() => {
