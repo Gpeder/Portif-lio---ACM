@@ -4,7 +4,8 @@ export const timeline: TimeLineProjectItem[] = [
   {
     period: "Atual",
     cargo: "Auxiliar de Projetos",
-    empresa: "—",
+    empresa: "Ana Laura Villela Arquitetura e Interiores - São Sebastião do Paraíso - MG",
+    descricao: "Acompanhamento de obras, orçamentos, detalhamento de projetos, aprovação de projetos em prefeitura",
     destaque: true,
   },
   {

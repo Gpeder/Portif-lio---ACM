@@ -8,6 +8,8 @@ export const projects: ProjectItem[] = [
     type: "Projeto autônomo",
     images: 3,
     accent: "#D4B896",
+    description: "Este projeto foi desenvolvido com foco em precisão técnica e sensibilidade espacial, equilibrando estética contemporânea com funcionalidade. Cada detalhe foi pensado para criar uma experiência de habitação única, desde a distribuição dos ambientes até a escolha de materiais e acabamentos. A concepção partiu de um briefing detalhado com o cliente, resultando em um projeto personalizado que reflete sua identidade e estilo de vida.",
+    details: "O desenvolvimento contemplou todas as etapas do projeto arquitetônico: estudo preliminar, anteprojeto, projeto executivo e compatibilização com instalações. A modelagem BIM permitiu a identificação e resolução de interferências antes da execução em obra.",
   },
   {
     title: "Sala Natalina",
@@ -16,6 +18,8 @@ export const projects: ProjectItem[] = [
     type: "Projeto autônomo",
     images: 2,
     accent: "#C8B8A2",
+    description: "Este projeto foi desenvolvido com foco em precisão técnica e sensibilidade espacial, equilibrando estética contemporânea com funcionalidade. Cada detalhe foi pensado para criar uma experiência de habitação única, desde a distribuição dos ambientes até a escolha de materiais e acabamentos. A concepção partiu de um briefing detalhado com o cliente, resultando em um projeto personalizado que reflete sua identidade e estilo de vida.",
+    details: "O desenvolvimento contemplou todas as etapas do projeto arquitetônico: estudo preliminar, anteprojeto, projeto executivo e compatibilização com instalações. A modelagem BIM permitiu a identificação e resolução de interferências antes da execução em obra.",
   },
   {
     title: "Quarto Boho",
@@ -24,6 +28,8 @@ export const projects: ProjectItem[] = [
     type: "Projeto autônomo",
     images: 2,
     accent: "#BCA898",
+    description: "Este projeto foi desenvolvido com foco em precisão técnica e sensibilidade espacial, equilibrando estética contemporânea com funcionalidade. Cada detalhe foi pensado para criar uma experiência de habitação única, desde a distribuição dos ambientes até a escolha de materiais e acabamentos. A concepção partiu de um briefing detalhado com o cliente, resultando em um projeto personalizado que reflete sua identidade e estilo de vida.",
+    details: "O desenvolvimento contemplou todas as etapas do projeto arquitetônico: estudo preliminar, anteprojeto, projeto executivo e compatibilização com instalações. A modelagem BIM permitiu a identificação e resolução de interferências antes da execução em obra.",
   },
   {
     title: "Barracão Nobre",
@@ -32,6 +38,8 @@ export const projects: ProjectItem[] = [
     type: "Aprovação prefeitura + fachada",
     images: 2,
     accent: "#B8A898",
+    description: "Este projeto foi desenvolvido com foco em precisão técnica e sensibilidade espacial, equilibrando estética contemporânea com funcionalidade. Cada detalhe foi pensado para criar uma experiência de habitação única, desde a distribuição dos ambientes até a escolha de materiais e acabamentos. A concepção partiu de um briefing detalhado com o cliente, resultando em um projeto personalizado que reflete sua identidade e estilo de vida.",
+    details: "O desenvolvimento contemplou todas as etapas do projeto arquitetônico: estudo preliminar, anteprojeto, projeto executivo e compatibilização com instalações. A modelagem BIM permitiu a identificação e resolução de interferências antes da execução em obra.",
   },
   {
     title: "Conjunto Residencial",
@@ -40,6 +48,8 @@ export const projects: ProjectItem[] = [
     type: "Plantas + elétrico + fachada",
     images: 3,
     accent: "#C0B0A0",
+    description: "Este projeto foi desenvolvido com foco em precisão técnica e sensibilidade espacial, equilibrando estética contemporânea com funcionalidade. Cada detalhe foi pensado para criar uma experiência de habitação única, desde a distribuição dos ambientes até a escolha de materiais e acabamentos. A concepção partiu de um briefing detalhado com o cliente, resultando em um projeto personalizado que reflete sua identidade e estilo de vida.",
+    details: "O desenvolvimento contemplou todas as etapas do projeto arquitetônico: estudo preliminar, anteprojeto, projeto executivo e compatibilização com instalações. A modelagem BIM permitiu a identificação e resolução de interferências antes da execução em obra.",
   },
   {
     title: "Hospital do Câncer",
@@ -48,6 +58,8 @@ export const projects: ProjectItem[] = [
     type: "Projeto executivo institucional",
     images: 4,
     accent: "#C4B4A4",
+    description: "Este projeto foi desenvolvido com foco em precisão técnica e sensibilidade espacial, equilibrando estética contemporânea com funcionalidade. Cada detalhe foi pensado para criar uma experiência de habitação única, desde a distribuição dos ambientes até a escolha de materiais e acabamentos. A concepção partiu de um briefing detalhado com o cliente, resultando em um projeto personalizado que reflete sua identidade e estilo de vida.",
+    details: "O desenvolvimento contemplou todas as etapas do projeto arquitetônico: estudo preliminar, anteprojeto, projeto executivo e compatibilização com instalações. A modelagem BIM permitiu a identificação e resolução de interferências antes da execução em obra.",
   },
   {
     title: "Residência MHM",
@@ -56,5 +68,7 @@ export const projects: ProjectItem[] = [
     type: "Marcenaria, marmoraria, infraestrutura",
     images: 6,
     accent: "#CCB8A6",
+    description: "Este projeto foi desenvolvido com foco em precisão técnica e sensibilidade espacial, equilibrando estética contemporânea com funcionalidade. Cada detalhe foi pensado para criar uma experiência de habitação única, desde a distribuição dos ambientes até a escolha de materiais e acabamentos. A concepção partiu de um briefing detalhado com o cliente, resultando em um projeto personalizado que reflete sua identidade e estilo de vida.",
+    details: "O desenvolvimento contemplou todas as etapas do projeto arquitetônico: estudo preliminar, anteprojeto, projeto executivo e compatibilização com instalações. A modelagem BIM permitiu a identificação e resolução de interferências antes da execução em obra.",
   },
 ];

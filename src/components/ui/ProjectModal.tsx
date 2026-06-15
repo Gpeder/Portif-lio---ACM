@@ -160,13 +160,13 @@ export function ProjectModal({
               Sobre o projeto
             </p>
             <p className="font-body font-light text-[14px] leading-[1.85] text-[#2C2C2A]">
-              {loremDesc}
+              {project.description || loremDesc}
             </p>
           </div>
 
           <div className="mb-8">
             <p className="font-body font-light text-[14px] leading-[1.85] text-[#2C2C2A]">
-              {loremDetails}
+              {project.details || loremDetails}
             </p>
           </div>
 
