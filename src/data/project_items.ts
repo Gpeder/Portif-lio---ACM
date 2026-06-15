@@ -1,0 +1,60 @@
+import { ProjectItem } from "@/types/portifolio";
+
+export const projects: ProjectItem[] = [
+  {
+    title: "Quarto Vitor",
+    category: "Interiores 3D",
+    tools: ["REVIT", "TWINMOTION"],
+    type: "Projeto autônomo",
+    images: 3,
+    accent: "#D4B896",
+  },
+  {
+    title: "Sala Natalina",
+    category: "Interiores 3D",
+    tools: ["REVIT", "TWINMOTION"],
+    type: "Projeto autônomo",
+    images: 2,
+    accent: "#C8B8A2",
+  },
+  {
+    title: "Quarto Boho",
+    category: "Interiores 3D",
+    tools: ["REVIT", "TWINMOTION"],
+    type: "Projeto autônomo",
+    images: 2,
+    accent: "#BCA898",
+  },
+  {
+    title: "Barracão Nobre",
+    category: "Freelancer",
+    tools: ["REVIT"],
+    type: "Aprovação prefeitura + fachada",
+    images: 2,
+    accent: "#B8A898",
+  },
+  {
+    title: "Conjunto Residencial",
+    category: "Freelancer",
+    tools: ["REVIT", "TWINMOTION", "LAYOUT"],
+    type: "Plantas + elétrico + fachada",
+    images: 3,
+    accent: "#C0B0A0",
+  },
+  {
+    title: "Hospital do Câncer",
+    category: "Estágio",
+    tools: ["REVIT"],
+    type: "Projeto executivo institucional",
+    images: 4,
+    accent: "#C4B4A4",
+  },
+  {
+    title: "Residência MHM",
+    category: "Escritório MHM",
+    tools: ["SKETCHUP", "LAYOUT"],
+    type: "Marcenaria, marmoraria, infraestrutura",
+    images: 6,
+    accent: "#CCB8A6",
+  },
+];

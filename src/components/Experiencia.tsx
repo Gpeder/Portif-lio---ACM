@@ -1,45 +1,4 @@
-const timeline = [
-  {
-    periodo: "Atual",
-    cargo: "Auxiliar de Projetos",
-    empresa: "—",
-    destaque: true,
-  },
-  {
-    periodo: "2024–2025",
-    cargo: "Arquiteta",
-    empresa: "Estúdio MHM — São Sebastião do Paraíso/MG",
-    descricao: "Projetos residenciais, marcenaria, marmoraria, infraestrutura. SketchUp + Layout.",
-    destaque: false,
-  },
-  {
-    periodo: "2023–2024",
-    cargo: "Estagiária",
-    empresa: "Prefeitura de Poços de Caldas — Hospital do Câncer",
-    descricao: "Projeto executivo BIM, compatibilização, detalhamento de esquadrias e fachada.",
-    destaque: false,
-  },
-  {
-    periodo: "2022–2023",
-    cargo: "Estagiária",
-    empresa: "Escritório INK Arquitetura — São Sebastião do Paraíso/MG",
-    descricao: "Projetos arquitetônicos em Archicad, atendimento ao cliente.",
-    destaque: false,
-  },
-  {
-    periodo: "2021–2022",
-    cargo: "Colaboradora",
-    empresa: "Escritório Modelo PUCMINAS",
-    descricao: "Projetos institucionais — Santa Casa de Poços de Caldas, espaço Vaga Viva.",
-    destaque: false,
-  },
-  {
-    periodo: "07/2023",
-    cargo: "Formação",
-    empresa: "Bacharel em Arquitetura e Urbanismo — PUCMINAS Poços de Caldas",
-    destaque: false,
-  },
-];
+import { timeline } from "../data/timeline_items";
 
 export function Experiencia() {
   return (
@@ -92,7 +51,7 @@ export function Experiencia() {
                   }`}
                 >
                   <span className="font-dm-mono text-[10px] tracking-[0.1em] text-gold block mb-2">
-                    {item.periodo}
+                    {item.period}
                   </span>
 
                   <h3
