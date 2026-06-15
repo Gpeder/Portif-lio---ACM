@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen bg-dark-bg flex items-center relative overflow-hidden"
+      className="min-h-screen bg-[#5A5535] flex items-center relative overflow-hidden"
     >
       {/* deocracao */}
       <div className="absolute right-[30%] top-[15%] bottom-[15%] w-px bg-cream-soft/18" />

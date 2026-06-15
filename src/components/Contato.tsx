@@ -70,7 +70,7 @@ export function Contato() {
             </div>
           </div>
 
-          {/* Coluna direita — formulário */}
+          {/*formulário */}
           <div data-section>
             <form data-reveal onSubmit={handleSubmit}>
               <div className="mb-8">
@@ -111,11 +111,10 @@ export function Contato() {
 
               <button
                 type="submit"
-                className={`font-body font-light text-[11px] tracking-[0.2em] uppercase py-4 px-10 border-[0.5px] border-solid border-gold cursor-pointer transition-all duration-300 w-full ${
-                  sent
+                className={`font-body font-light text-[11px] tracking-[0.2em] uppercase py-4 px-10 border-[0.5px] border-solid border-gold cursor-pointer transition-all duration-300 w-full ${sent
                     ? "bg-gold text-dark-bg"
                     : "bg-transparent text-gold hover:bg-gold hover:text-dark-bg"
-                }`}
+                  }`}
               >
                 {sent ? "Mensagem enviada ✓" : "Enviar mensagem"}
               </button>
