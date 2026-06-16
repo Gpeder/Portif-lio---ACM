@@ -23,7 +23,6 @@ export function Contato() {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      // Reseta os erros de borda vermelha após 3 segundos
       setTimeout(() => {
         setErrors({});
       }, 3000);
@@ -72,7 +71,7 @@ export function Contato() {
       <section id="contato" className="bg-dark-bg py-24 px-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
 
-          {/* Coluna esquerda — info */}
+          {/* Coluna info */}
           <div data-section>
             <p
               data-reveal
@@ -137,11 +136,10 @@ export function Contato() {
                     if (errors.nome) setErrors((prev) => ({ ...prev, nome: false }));
                   }}
                   placeholder="Seu nome"
-                  className={`contact-input ${
-                    errors.nome
-                      ? "!border-b-red-500/80 animate-[shake_0.4s_ease-in-out_both]"
-                      : ""
-                  }`}
+                  className={`contact-input ${errors.nome
+                    ? "!border-b-red-500/80 animate-[shake_0.4s_ease-in-out_both]"
+                    : ""
+                    }`}
                 />
               </div>
 
@@ -155,11 +153,10 @@ export function Contato() {
                     if (errors.email) setErrors((prev) => ({ ...prev, email: false }));
                   }}
                   placeholder="seu@email.com"
-                  className={`contact-input ${
-                    errors.email
-                      ? "!border-b-red-500/80 animate-[shake_0.4s_ease-in-out_both]"
-                      : ""
-                  }`}
+                  className={`contact-input ${errors.email
+                    ? "!border-b-red-500/80 animate-[shake_0.4s_ease-in-out_both]"
+                    : ""
+                    }`}
                 />
               </div>
 
@@ -173,11 +170,10 @@ export function Contato() {
                   }}
                   placeholder="Conte-me sobre o seu projeto..."
                   rows={5}
-                  className={`contact-input resize-none ${
-                    errors.mensagem
-                      ? "!border-b-red-500/80 animate-[shake_0.4s_ease-in-out_both]"
-                      : ""
-                  }`}
+                  className={`contact-input resize-none ${errors.mensagem
+                    ? "!border-b-red-500/80 animate-[shake_0.4s_ease-in-out_both]"
+                    : ""
+                    }`}
                 />
               </div>
 
@@ -198,7 +194,7 @@ export function Contato() {
 
       <footer className="bg-dark-bg border-t-[0.5px] border-t-[rgba(232,226,217,0.1)] py-8 px-10 text-center">
         <p className="font-body font-light text-[11px] tracking-[0.22em] uppercase text-cream-soft/30 m-0">
-          © 2026 Ana Carolina Miranda · Arquitetura & Interiores
+          © {new Date().getFullYear()} Ana Carolina Miranda · Arquitetura & Interiores
         </p>
       </footer>
     </>
