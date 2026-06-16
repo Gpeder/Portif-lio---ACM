@@ -1,7 +1,12 @@
 
-  import { createRoot } from "react-dom/client";
-  import App from "./app/App.tsx";
-  import "./styles/globals.css";
+import { createRoot } from "react-dom/client";
+import App from "./app/App.tsx";
+import "./styles/globals.css";
 
-  createRoot(document.getElementById("root")!).render(<App />);
-  
+createRoot(document.getElementById("root")!).render(<App />);
+
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    document.body.classList.add("loaded");
+  });
+});
