@@ -43,6 +43,3 @@ Thumbs.db
 *.sln
 *.sw?
 
-# Pasta de assets privados (para fotos e recursos que nao devem ir para o GitHub)
-src/assets/private/*
-!src/assets/private/.gitkeep
