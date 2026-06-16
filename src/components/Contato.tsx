@@ -15,7 +15,7 @@ export function Contato() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validação manual de campos obrigatórios
+    // Validação de campos
     const newErrors: typeof errors = {};
     if (!form.nome.trim()) newErrors.nome = true;
     if (!form.email.trim()) newErrors.email = true;
@@ -27,6 +27,27 @@ export function Contato() {
         setErrors({});
       }, 3000);
       return;
+    }
+
+    // evita spam
+    const LAST_SEND_KEY = "acm_portfolio_last_send";
+    const COOLDOWN_MS = 3 * 60 * 1000;
+    const lastSend = localStorage.getItem(LAST_SEND_KEY);
+    if (lastSend) {
+      const timePassed = Date.now() - parseInt(lastSend, 10);
+      if (timePassed < COOLDOWN_MS) {
+        const secondsLeft = Math.ceil((COOLDOWN_MS - timePassed) / 1000);
+        const timeText = secondsLeft > 60
+          ? `${Math.ceil(secondsLeft / 60)} minuto(s)`
+          : `${secondsLeft} segundo(s)`;
+
+        setToast({
+          show: true,
+          message: `Mensagem enviada recentemente. Aguarde mais ${timeText} para enviar outra.`,
+          type: "error",
+        });
+        return;
+      }
     }
 
     setSubmitting(true);
