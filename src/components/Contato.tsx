@@ -1,20 +1,74 @@
 import { useState } from "react";
+import { submitContactForm } from "@/data/forms";
+import { Toast } from "@/components/ui/Toast";
 
 export function Contato() {
   const [form, setForm] = useState({ nome: "", email: "", mensagem: "" });
-  const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState<{ nome?: boolean; email?: boolean; mensagem?: boolean }>({});
+  const [toast, setToast] = useState<{ show: boolean; message: string; type: "success" | "error" }>({
+    show: false,
+    message: "",
+    type: "success",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm({ nome: "", email: "", mensagem: "" });
+
+    // Validação manual de campos obrigatórios
+    const newErrors: typeof errors = {};
+    if (!form.nome.trim()) newErrors.nome = true;
+    if (!form.email.trim()) newErrors.email = true;
+    if (!form.mensagem.trim()) newErrors.mensagem = true;
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      // Reseta os erros de borda vermelha após 3 segundos
+      setTimeout(() => {
+        setErrors({});
+      }, 3000);
+      return;
+    }
+
+    setSubmitting(true);
+
+    const success = await submitContactForm(form);
+
+    if (success) {
+      setForm({ nome: "", email: "", mensagem: "" });
+      setToast({
+        show: true,
+        message: "Sua mensagem foi enviada com sucesso!",
+        type: "success",
+      });
+    } else {
+      setToast({
+        show: true,
+        message: "Ocorreu um erro ao enviar. Por favor, tente novamente.",
+        type: "error",
+      });
+    }
+
+    setSubmitting(false);
   };
 
   const labelClass = "font-body font-light text-[10px] tracking-[0.22em] uppercase text-[#6B5B45] block mb-1";
 
   return (
     <>
+      <style>{`
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          20%, 60% { transform: translateX(-6px); }
+          40%, 80% { transform: translateX(6px); }
+        }
+      `}</style>
+      <Toast
+        show={toast.show}
+        message={toast.message}
+        type={toast.type}
+        onClose={() => setToast((prev) => ({ ...prev, show: false }))}
+      />
       <section id="contato" className="bg-dark-bg py-24 px-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
 
@@ -72,51 +126,70 @@ export function Contato() {
 
           {/*formulário */}
           <div data-section>
-            <form data-reveal onSubmit={handleSubmit}>
+            <form data-reveal onSubmit={handleSubmit} noValidate>
               <div className="mb-8">
-                <label className={labelClass}>Nome</label>
+                <label className={`${labelClass} ${errors.nome ? "text-red-500/80 transition-colors duration-300" : "transition-colors duration-300"}`}>Nome</label>
                 <input
                   type="text"
                   value={form.nome}
-                  onChange={(e) => setForm({ ...form, nome: e.target.value })}
+                  onChange={(e) => {
+                    setForm({ ...form, nome: e.target.value });
+                    if (errors.nome) setErrors((prev) => ({ ...prev, nome: false }));
+                  }}
                   placeholder="Seu nome"
-                  required
-                  className="contact-input"
+                  className={`contact-input ${
+                    errors.nome
+                      ? "!border-b-red-500/80 animate-[shake_0.4s_ease-in-out_both]"
+                      : ""
+                  }`}
                 />
               </div>
 
               <div className="mb-8">
-                <label className={labelClass}>Email</label>
+                <label className={`${labelClass} ${errors.email ? "text-red-500/80 transition-colors duration-300" : "transition-colors duration-300"}`}>Email</label>
                 <input
                   type="email"
                   value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  onChange={(e) => {
+                    setForm({ ...form, email: e.target.value });
+                    if (errors.email) setErrors((prev) => ({ ...prev, email: false }));
+                  }}
                   placeholder="seu@email.com"
-                  required
-                  className="contact-input"
+                  className={`contact-input ${
+                    errors.email
+                      ? "!border-b-red-500/80 animate-[shake_0.4s_ease-in-out_both]"
+                      : ""
+                  }`}
                 />
               </div>
 
               <div className="mb-10">
-                <label className={labelClass}>Mensagem</label>
+                <label className={`${labelClass} ${errors.mensagem ? "text-red-500/80 transition-colors duration-300" : "transition-colors duration-300"}`}>Mensagem</label>
                 <textarea
                   value={form.mensagem}
-                  onChange={(e) => setForm({ ...form, mensagem: e.target.value })}
+                  onChange={(e) => {
+                    setForm({ ...form, mensagem: e.target.value });
+                    if (errors.mensagem) setErrors((prev) => ({ ...prev, mensagem: false }));
+                  }}
                   placeholder="Conte-me sobre o seu projeto..."
-                  required
                   rows={5}
-                  className="contact-input resize-none"
+                  className={`contact-input resize-none ${
+                    errors.mensagem
+                      ? "!border-b-red-500/80 animate-[shake_0.4s_ease-in-out_both]"
+                      : ""
+                  }`}
                 />
               </div>
 
               <button
                 type="submit"
-                className={`font-body font-light text-[11px] tracking-[0.2em] uppercase py-4 px-10 border-[0.5px] border-solid border-gold cursor-pointer transition-all duration-300 w-full ${sent
-                    ? "bg-gold text-dark-bg"
-                    : "bg-transparent text-gold hover:bg-gold hover:text-dark-bg"
+                disabled={submitting}
+                className={`font-body font-light text-[11px] tracking-[0.2em] uppercase py-4 px-10 border-[0.5px] border-solid cursor-pointer transition-all duration-300 w-full ${submitting
+                  ? "border-cream-soft/30 bg-transparent text-cream-soft/30 cursor-not-allowed"
+                  : "border-gold bg-transparent text-gold hover:bg-gold hover:text-dark-bg"
                   }`}
               >
-                {sent ? "Mensagem enviada ✓" : "Enviar mensagem"}
+                {submitting ? "Enviando..." : "Enviar mensagem"}
               </button>
             </form>
           </div>
