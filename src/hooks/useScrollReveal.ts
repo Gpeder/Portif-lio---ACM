@@ -47,7 +47,7 @@ export function useScrollReveal() {
       return observer;
     };
 
-    // * Pequeno atraso para garantir que o DOM esteja totalmente renderizado
+    // * atraso para rend.
     const timer = setTimeout(() => {
       const observer = init();
       return () => observer.disconnect();
