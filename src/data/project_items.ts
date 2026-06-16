@@ -58,8 +58,8 @@ export const projects: ProjectItem[] = [
     type: "Projeto executivo institucional",
     images: 4,
     accent: "#C4B4A4",
-    description: "Este projeto foi desenvolvido com foco em precisão técnica e sensibilidade espacial, equilibrando estética contemporânea com funcionalidade. Cada detalhe foi pensado para criar uma experiência de habitação única, desde a distribuição dos ambientes até a escolha de materiais e acabamentos. A concepção partiu de um briefing detalhado com o cliente, resultando em um projeto personalizado que reflete sua identidade e estilo de vida.",
-    details: "O desenvolvimento contemplou todas as etapas do projeto arquitetônico: estudo preliminar, anteprojeto, projeto executivo e compatibilização com instalações. A modelagem BIM permitiu a identificação e resolução de interferências antes da execução em obra.",
+    description: "Atuação durante estágio de um ano no desenvolvimento do projeto executivo institucional do Hospital do Câncer. O trabalho envolveu o estudo de volumetria, materiais e composição da edificação, além da especificação de revestimentos, cores, brises, pele de vidro e guarda-corpo, sempre priorizando a funcionalidade, iluminação natural e a identidade visual do edifício.",
+    details: "O detalhamento técnico contemplou a organização de informações em pranchas executivas completas com cotas, tabelas técnicas, definição de esquadrias (portas, janelas e painéis) com foco em isolamento acústico, térmico e segurança. Também foram propostos painéis e elementos humanizados para o ambiente hospitalar, buscando trazer leveza, conforto e bem-estar emocional para os pacientes.",
   },
   {
     title: "Residência MHM",
