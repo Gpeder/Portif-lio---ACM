@@ -1,13 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { ASSETS } from "@/data/assets";
+import { skills } from "@/data/skill_items";
 
-const skills = [
-  { name: "REVIT", level: 4 },
-  { name: "SKETCHUP", level: 5 },
-  { name: "TWINMOTION", level: 4 },
-  { name: "ARCHICAD", level: 3 },
-  { name: "AUTOCAD", level: 4 },
-  { name: "LAYOUT", level: 5 },
-];
+
+
 
 function SkillBar({ name, level }: { name: string; level: number }) {
   const [animated, setAnimated] = useState(false);
@@ -57,14 +53,22 @@ export function Sobre() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
         <div data-reveal className="relative">
           <div className="w-full aspect-[3/4] bg-cream-soft [clip-path:polygon(0_0,100%_0,100%_85%,85%_100%,0_100%)] flex items-center justify-center relative overflow-hidden">
-            <div className="text-center p-6">
-              <p className="font-heading font-light text-[18px] text-[#6B5B45] tracking-[0.1em] mb-2">
-                Ana Carolina Miranda
-              </p>
-              <p className="font-body text-[10px] tracking-[0.2em] uppercase text-gold">
-                Arquiteta
-              </p>
-            </div>
+            {ASSETS.foto2 ? (
+              <img
+                src={ASSETS.foto2}
+                alt="Ana Carolina Miranda"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="text-center p-6">
+                <p className="font-heading font-light text-[18px] text-[#6B5B45] tracking-[0.1em] mb-2">
+                  Ana Carolina Miranda
+                </p>
+                <p className="font-body text-[10px] tracking-[0.2em] uppercase text-gold">
+                  Arquiteta
+                </p>
+              </div>
+            )}
           </div>
           <div className="absolute -bottom-4 left-6 w-16 h-px bg-gold" />
         </div>

@@ -30,5 +30,12 @@ export interface Viewer3dItem {
     depth: number;
     height: number;
     description: string;
-    modelUrl?: string; // Opcional: Caminho para o arquivo 3D (.gltf/.glb) vindo do Revit/SketchUp
+    modelUrl?: string;
+}
+
+// nivel skill
+
+export interface SkillItem {
+    name: string;
+    level: number;
 }
